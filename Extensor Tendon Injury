@@ -1,0 +1,129 @@
+
+import os
+import datetime
+from datetime import timedelta
+#print (os.getcwd())
+#Add HEP, CPT/IDC-10 codes, start/end time w/ 8 minute rule
+
+#Change 
+#Input Keys: SX Extensor tendon Zone1-2 = ETZ12, Extensor tendon Zone3-4 = ETZ34, Extensor tendon Zone5-6 = ETZ56
+daysago = 30
+SX = 'ETZ34'
+MD = any
+Protocol = any
+print ('Surgery:' + SX)
+
+#designates font color when running in atom
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
+#Prints todays date
+tday = datetime.date.today()
+print(color.YELLOW +'Todays date: '+ color.END,tday)
+# might need various programs for each surgery, physician,
+
+# calculates number of days from a given date
+# DOS = datetime.date(2020, 8, 25)
+# recovery =  (tday - DOS)
+# print('Days since surgery:', recovery)
+##################################################
+
+####################################################
+#Surgery types
+SX1 = 'extensor tendon surgery'
+SX2 = 'Zone3-4'
+SX3 = 'Zone5-6'
+
+#Doctors
+MD1 = 'Dr. Young'
+
+
+
+##########################################
+#calculates date from a given number of days, see daysago function above
+t1 = datetime.date.today() - timedelta(days= daysago)
+print (color.YELLOW +'Date of surgery:'+ color.END, t1)
+#Key number of weeks ago from days, only up to day 91, may add more
+SXWK1 = datetime.date.today() - timedelta(days=7 )
+SXWK2 = datetime.date.today() - timedelta(days=14 )
+SXWK3 = datetime.date.today() - timedelta(days=21 )
+SXWK4 = datetime.date.today() - timedelta(days=35 )
+SXWK5 = datetime.date.today() - timedelta(days=42 )
+SXWK6 = datetime.date.today() - timedelta(days=49 )
+SXWK7 = datetime.date.today() - timedelta(days=56 )
+SXWK8 = datetime.date.today() - timedelta(days=63 )
+SXWK9 = datetime.date.today() - timedelta(days=70)
+SXWK10 = datetime.date.today() - timedelta(days=77 )
+SXWK11 = datetime.date.today() - timedelta(days=84 )
+SXWK12 = datetime.date.today() - timedelta(days=91 )
+
+
+#Treatments
+#Zones1-2, Change: 1. Key and 2. String as needed to match protocol segment
+WK1_6_ET12 = (color.RED + '\nSplint: ' + color.END + 'Mallet finger splint' + color.RED + '\nTherapeutic exercices: ' + color.END + ' AAROM of MP/PIP.' + color.RED + '\nPrecautions: ' + color.END + ' Daily skin check whil maintaining DIP. No active DIP motion.' + color.RED + '\nOther: '+ color.END +' If swan-neck deformity develops, splint PIP at 30 to 45 flexion via dorsal block splint.'
+'Casting is an option, and may have better outcomes via constant circumferential positionin')
+WK7_8_ET12 = (color.RED + '\nSplint: ' + color.END + 'Remove splint for exercise, otherwise splint is worn continuously.' + color.RED + '\nTherapeutic exercices: ' + color.END + ' AROM of DIP flex/ext, 10 reps hourly.  Start at 10 degrees flexion, progress in 10-20 degree increments per week, if no extensor lag develops' + color.RED + '\nPrecautions: ' + color.END + ' If extensor lag develops > 10 degrees, resume continuous splinting (no ROM) for 1- 2 weeks and reassess.' + color.RED + '\nOther: '+ color.END +'Prehension and coordination exercise should supplement ROM program.'
+'None')
+WK9_10_ET12 = (color.RED + '\nSplint: ' + color.END + 'Gradually wean from splint during day.Continue splint at night.' + color.RED + '\nTherapeutic exercices: ' + color.END + ' Can introduce AAROM as needed.' + color.RED + '\nPrecautions: ' + color.END + 'None' + color.RED + '\nOther: '+ color.END +' Prehension and coordination exercise should supplement ROM program.')
+WK11_12_ET12 = (color.RED + '\nSplint: ' + color.END + 'D/C splint.' + color.RED + '\nTherapeutic exercices: ' + color.END + ' PROM/PREs.' + color.RED + '\nPrecautions: ' + color.END + 'None' + color.RED + '\nOther: '+ color.END +' None.')
+#to add new protocol must change 1. Key at end of plan of care to match above, 2. SXWK6 to however many weeks in segment of protocol, 3. Surgery and MD if different
+if (SXWK6 <= t1) and (SX == 'ETZ12') and (MD == any) and (Protocol == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK1_6_ET12,'.')
+elif SXWK8 <= t1 and (SX == 'ETZ12') and (MD == any) and (Protocol == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK7_8_ET12,'.')
+elif SXWK10 <= t1 and (SX == 'ETZ12') and (MD == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK9_10_ET12,'.')
+elif SXWK12 <= t1 and (SX == any) and (MD == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK11_12_ET12,'.')
+###############################################################
+#Zones3-4, Change: 1. Key and 2. Sting
+WK1_6_ET34 = (color.RED + '\nSplint: ' + color.END + 'Volar digit static splint, PIP at neutral, or serial cast. Lateral bands. Repaired: include DIP at 0 neutral. If the lateral bands are not repaired the DIP is left free. ' + color.RED + '\nTherapeutic exercices: ' + color.END + ' ROM may be initiated anytime during week three to six, depending upon healing.Initiate AROM PIP flex to 30 degrees. If no extensor lag develops, progress in 10-20 degree increments each week. 10 repetitions hourly. If lateral bands are repaired, begin gliding at week three, and at week one in the case that lateral bands injured.' + color.RED + '\nPrecautions:'  + color.END +  'No forceful flexion. No gripping. Splint remains on continuously between ROM sessions.' + color.RED + '\nOther: '+ color.END +' If swan-neck deformity develops, splint PIP at 30 to 45 flexion via dorsal block splint.'
+'Casting is an option, and may have better outcomes via constant circumferential positionin')
+WK7_8_ET34 = (color.RED + '\nSplint: ' + color.END + 'Gradually wean from splint during day. Continue splint at night.' + color.RED + '\nTherapeutic exercices: ' + color.END + 'AAROM or dynamic flexion splinting may be initiated, as well as combined flexion of the wrist and digits.' + color.RED + '\nPrecautions: ' + color.END + 'None' + color.RED + '\nOther: '+ color.END + 'Light function out of splint'
+'None')
+WK9_10_ET34 = (color.RED + '\nSplint: ' + color.END + 'D/C splint.' + color.RED + '\nTherapeutic exercices: ' + color.END + ' PROM/PREs.' + color.RED + '\nPrecautions: ' + color.END + 'None' + color.RED + '\nOther: '+ color.END +' None')
+
+#to add new protocol must change 1. SXWK6 to weeks, 2. SX to surgery, 3. Plan of care to:
+if (SXWK6 <= t1) and (SX == 'ETZ34') and (MD == any) and (Protocol == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK1_6_ET34,'.')
+elif SXWK8 <= t1 and (SX == 'ETZ34') and (MD == any) and (Protocol == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK7_8_ET34,'.')
+elif SXWK10 <= t1 and (SX == 'ETZ34') and (MD == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK9_10_ET34,'.')
+# ###################################
+# #Zones5-6, Change: 1. Key and 2. Sting
+WK1_3_ET56 = (color.RED + '\nSplint: ' + color.END + 'Forearm based dynamic digital extension splint. Wrist 25-30 degrees ext, MP at 0, PIPs free. Fabricate static forearm based Splint at night, wrist at 30-40 ext, MPs 0, PIPs free.'
+ + color.RED + '\nTherapeutic exercices: ' + color.END +   'AROM flexion: isolated joint and tendon gliding (hook and straight fist). Passive extension via elastic recoil of the dynamic splint. 10-20 reps hourly. Begin active MP flexion to 30-40 degrees (via'
+  'fexion  lock on dynamic splint). Progress MP flexion as tolerated. Perform wrist and digit PROM in extension and tenodesis out of splint 10 repetitions hourly.' + color.RED + '\nPrecautions:'  + color.END +  'Full fisting may place too much stress on the repair. Assess on a case-bycase basis.' + color.RED + '\nOther:' + color.END + 'May consider option of total immobilization if necessary.'
+'Casting is an option, and may have better outcomes via constant circumferential position')
+WK4_6_ET56 = (color.RED + '\nSplint: ' + color.END + 'Come out of splint for exercise' + color.RED +'\nTherapeutic exercices: ' + color.END + 'Progress MP flexion to 40-60 (week 4), 70-80 (week 5). Initiate full fisting if not already done. Composite wrist and finger flexion. Active digital extension exercises out of splint.' + color.RED + '\nPrecautions:' + color.END + 'No resistance until 6-8 weeks' + color.RED + '\nOther' + color.END + ' Volar static digital IP extension splints can be made to facilitate MP excursion by immobilizing IP joint (splint placed in slings). Allows greater pull-through at MP joint.')
+WK7_ET56 = (color.RED + '\nSplint: ' + color.END + 'D/C splint. Dynamic flexion splinting PRN.' + color.RED + '\nTherapeutic exercices: ' + color.END + ' Continue w/ no precautions. Goal: Full composite wrist and digit motion prior to removing yoke splint for activities and D/C from therapy..' + color.RED + '\nPrecautions: ' + color.END + 'None' + color.RED + '\nOther: '+ color.END +' none.')
+#to add new protocol must change 1. SXWK6 to weeks, 2. SX to surgery, 3. Plan of care to:
+if (SXWK6 <= t1) and (SX == 'ETZ56') and (MD == any) and (Protocol == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK1_3_ET56,'.')
+elif (SXWK8 <= t1) and (SX == 'ETZ56') and (MD == any) and (Protocol == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK4_6_ET56,'.')
+elif (SXWK10 <= t1) and (SX == 'ETZ56') and (MD == any):
+    print ('Pt is status post', daysago, 'day(s)', SX1, 'perfomed by', MD1, '.', '\n','Plan of care:', WK7_ET56,'.')
+
+
+#from datetime import timedelta
+#t1 = (tday - 90)
+
+#Imports file
+#import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+#sys.path.insert(1, 'Users\gueri\Desktop\TX_SX.py')
+#sys.path.append('Users\gueri\Desktop\TX_SX')
+#import TX_SX
+else:
+    print ('No data found. Possibly, no established protocol'.center(20, '-'))
